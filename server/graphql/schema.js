@@ -10,10 +10,18 @@ const data = require('./data.json')
 const Match = new GraphQLObjectType({
   name: 'Match',
   fields: {
-    id: new GraphQLNonNull(GraphQLString),
-    title: GraphQLString,
-    enTitle: GraphQLString,
-    desc: GraphQLString
+    id: {
+      type: new GraphQLNonNull(GraphQLString)
+    },
+    title: {
+      type: GraphQLString
+    },
+    enTitle: {
+      type: GraphQLString
+    },
+    desc: {
+      type: GraphQLString
+    }
   }
 })
 
@@ -29,7 +37,9 @@ const Query = new GraphQLObjectType({
     match: {
       type: Match,
       args: {
-        id: GraphQLString
+        id: {
+          type: GraphQLString
+        }
       },
       resolve (_, args) {
         return data.filter(m => m.id === args.id)[0]
