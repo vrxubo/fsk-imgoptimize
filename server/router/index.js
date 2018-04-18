@@ -7,11 +7,3 @@ router.get('/graphiql', graphiqlKoa({
   endpointURL: '/graphql'
 }))
 module.exports = router.routes()
-
-
-// router.get('/graphql', graphqlKoa({schema}))
-// router.post('/graphql', graphqlKoa({schema}))
-// router.get('/graphiql', graphiqlKoa({
-//   endpointURL: '/graphql',
-//   passHeader: `'Authorization': 'Bearer lorem ipsum'`,
-// }))

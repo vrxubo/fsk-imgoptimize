@@ -1,50 +1,29 @@
 const {
-  GraphQLObjectType,
-  GraphQLString,
   GraphQLSchema,
-  GraphQLList,
-  GraphQLNonNull
+  GraphQLObjectType
 } = require('graphql')
-const data = require('./data.json')
-
-const Match = new GraphQLObjectType({
-  name: 'Match',
-  fields: {
-    id: {
-      type: new GraphQLNonNull(GraphQLString)
-    },
-    title: {
-      type: GraphQLString
-    },
-    enTitle: {
-      type: GraphQLString
-    },
-    desc: {
-      type: GraphQLString
-    }
-  }
-})
+const {
+  match,
+  matches,
+  player,
+  players,
+  food,
+  foods,
+  rater,
+  raters
+} = require('./model/match')
 
 const Query = new GraphQLObjectType({
   name: 'Query',
   fields: {
-    matches: {
-      type: new GraphQLList(Match),
-      resolve () {
-        return data
-      }
-    },
-    match: {
-      type: Match,
-      args: {
-        id: {
-          type: GraphQLString
-        }
-      },
-      resolve (_, args) {
-        return data.filter(m => m.id === args.id)[0]
-      }
-    }
+    match,
+    matches,
+    player,
+    players,
+    food,
+    foods,
+    rater,
+    raters
   }
 })
 module.exports = new GraphQLSchema({
